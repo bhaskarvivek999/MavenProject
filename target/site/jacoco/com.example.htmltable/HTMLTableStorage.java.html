@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>HTMLTableStorage.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">my-maven-project</a> &gt; <a href="index.source.html" class="el_package">com.example.htmltable</a> &gt; <span class="el_source">HTMLTableStorage.java</span></div><h1>HTMLTableStorage.java</h1><pre class="source lang-java linenums">package com.example.htmltable;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class HTMLTableStorage {
+
+<span class="nc" id="L10">    private String autoFill = &quot;&amp;nbsp;&quot;;</span>
+<span class="nc" id="L11">    private boolean autoGrow = true;</span>
+<span class="nc" id="L12">    private List&lt;List&lt;Map&lt;String, Object&gt;&gt;&gt; structure = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L13">    private int rows = 0;</span>
+<span class="nc" id="L14">    private int cols = 0;</span>
+<span class="nc" id="L15">    private int nestLevel = 0;</span>
+<span class="nc" id="L16">    private boolean useTGroups = false;</span>
+
+<span class="nc" id="L18">    public HTMLTableStorage(int tabOffset, boolean useTGroups) {</span>
+        // Constructor logic here
+<span class="nc" id="L20">        this.useTGroups = useTGroups;</span>
+<span class="nc" id="L21">    }</span>
+
+    public void setUseTGroups(boolean useTGroups) {
+<span class="nc" id="L24">        this.useTGroups = useTGroups;</span>
+<span class="nc" id="L25">    }</span>
+
+    public boolean getUseTGroups() {
+<span class="nc" id="L28">        return this.useTGroups;</span>
+    }
+
+    public void setAutoFill(String fill) {
+<span class="nc" id="L32">        this.autoFill = fill;</span>
+<span class="nc" id="L33">    }</span>
+
+    public String getAutoFill() {
+<span class="nc" id="L36">        return this.autoFill;</span>
+    }
+
+    public void setAutoGrow(boolean grow) {
+<span class="nc" id="L40">        this.autoGrow = grow;</span>
+<span class="nc" id="L41">    }</span>
+
+    public boolean getAutoGrow() {
+<span class="nc" id="L44">        return this.autoGrow;</span>
+    }
+
+    public void setRowCount(int rows) {
+<span class="nc" id="L48">        this.rows = rows;</span>
+<span class="nc" id="L49">    }</span>
+
+    public void setColCount(int cols) {
+<span class="nc" id="L52">        this.cols = cols;</span>
+<span class="nc" id="L53">    }</span>
+
+    public int getRowCount() {
+<span class="nc" id="L56">        return this.rows;</span>
+    }
+
+    public int getColCount(Integer row) {
+<span class="nc bnc" id="L60" title="All 2 branches missed.">        if (row != null) {</span>
+<span class="nc" id="L61">            int count = 0;</span>
+<span class="nc bnc" id="L62" title="All 2 branches missed.">            for (Map&lt;String, Object&gt; cell : this.structure.get(row)) {</span>
+<span class="nc bnc" id="L63" title="All 2 branches missed.">                if (cell instanceof Map) {</span>
+<span class="nc" id="L64">                    count++;</span>
+                }
+<span class="nc" id="L66">            }</span>
+<span class="nc" id="L67">            return count;</span>
+        }
+<span class="nc" id="L69">        return this.cols;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

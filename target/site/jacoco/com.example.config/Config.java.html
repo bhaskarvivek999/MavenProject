@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Config.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">my-maven-project</a> &gt; <a href="index.source.html" class="el_package">com.example.config</a> &gt; <span class="el_source">Config.java</span></div><h1>Config.java</h1><pre class="source lang-java linenums">package com.example.config;
+
+import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Map;
+
+public class Config {
+
+<span class="fc" id="L9">    public static String monetaryItem = &quot;EUR&quot;;</span>
+
+    private Map&lt;String, String&gt; settings;
+
+<span class="fc" id="L13">    public static Map&lt;String, String&gt; lang = new HashMap&lt;String, String&gt;() {</span>
+        {
+<span class="fc" id="L15">            put(&quot;0&quot;, &quot;en&quot;);</span>
+<span class="fc" id="L16">            put(&quot;1&quot;, &quot;bs-Latn-BA&quot;);</span>
+<span class="fc" id="L17">            put(&quot;2&quot;, &quot;ba&quot;);</span>
+<span class="fc" id="L18">        }</span>
+    };
+
+<span class="fc" id="L21">    public static Map&lt;String, String&gt; confSet = new HashMap&lt;String, String&gt;() {</span>
+        {
+<span class="fc" id="L23">            put(&quot;lab-codes&quot;, &quot;lab-codes&quot;);</span>
+<span class="fc" id="L24">            put(&quot;rend&quot;, &quot;rend&quot;);</span>
+<span class="fc" id="L25">            put(&quot;def&quot;, &quot;def&quot;);</span>
+<span class="fc" id="L26">            put(&quot;pre&quot;, &quot;pre&quot;);</span>
+<span class="fc" id="L27">            put(&quot;tab&quot;, &quot;tab&quot;);</span>
+<span class="fc" id="L28">        }</span>
+    };
+
+<span class="fc" id="L31">    public static Map&lt;String, String&gt; moduleSet = new HashMap&lt;String, String&gt;() {</span>
+        {
+<span class="fc" id="L33">            put(&quot;pre&quot;, &quot;pre&quot;);</span>
+<span class="fc" id="L34">            put(&quot;rend&quot;, &quot;rend&quot;);</span>
+<span class="fc" id="L35">            put(&quot;lab-codes&quot;, &quot;lab-codes&quot;);</span>
+<span class="fc" id="L36">        }</span>
+    };
+
+<span class="fc" id="L39">    public static Map&lt;String, String&gt; createInstance = new HashMap&lt;String, String&gt;() {</span>
+        {
+<span class="fc" id="L41">            put(&quot;rend&quot;, &quot;rend&quot;);</span>
+<span class="fc" id="L42">            put(&quot;def&quot;, &quot;def&quot;);</span>
+<span class="fc" id="L43">        }</span>
+    };
+
+<span class="fc" id="L46">    public static String owner = &quot;www.eba.europa.eu&quot;;</span>
+
+<span class="fc" id="L48">    public Config(Map&lt;String, String&gt; settings) {</span>
+<span class="fc" id="L49">        this.settings = settings;</span>
+<span class="fc" id="L50">    }</span>
+
+    public static String publicDir() {
+<span class="nc" id="L53">        return storagePath(&quot;app/public/tax&quot;);</span>
+    }
+
+<span class="fc" id="L56">    public static String prefixOwner = &quot;fba&quot;;</span>
+
+    public static String setLogoPath() {
+<span class="nc" id="L59">        return Paths.get(publicPath(), &quot;images&quot;, &quot;logo.svg&quot;).toString();</span>
+    }
+
+    public static Map&lt;String, Map&lt;String, String&gt;&gt; owners() {
+<span class="nc" id="L63">        Map&lt;String, Map&lt;String, String&gt;&gt; owners = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L64">        owners.put(&quot;fba&quot;, new HashMap&lt;String, String&gt;() {</span>
+            {
+<span class="nc" id="L66">                put(&quot;namespace&quot;, &quot;http://www.fba.ba&quot;);</span>
+<span class="nc" id="L67">                put(&quot;officialLocation&quot;, &quot;http://www.fba.ba/xbrl&quot;);</span>
+<span class="nc" id="L68">                put(&quot;prefix&quot;, &quot;fba&quot;);</span>
+<span class="nc" id="L69">                put(&quot;copyright&quot;, &quot;(C) FBA&quot;);</span>
+<span class="nc" id="L70">            }</span>
+        });
+<span class="nc" id="L72">        owners.put(&quot;eba&quot;, new HashMap&lt;String, String&gt;() {</span>
+            {
+<span class="nc" id="L74">                put(&quot;namespace&quot;, &quot;http://www.eba.europa.eu/xbrl/crr&quot;);</span>
+<span class="nc" id="L75">                put(&quot;officialLocation&quot;, &quot;http://www.eba.europa.eu/eu/fr/xbrl/crr&quot;);</span>
+<span class="nc" id="L76">                put(&quot;prefix&quot;, &quot;eba&quot;);</span>
+<span class="nc" id="L77">                put(&quot;copyright&quot;, &quot;(C) EBA&quot;);</span>
+<span class="nc" id="L78">            }</span>
+        });
+<span class="nc" id="L80">        owners.put(&quot;audt&quot;, new HashMap&lt;String, String&gt;() {</span>
+            {
+<span class="nc" id="L82">                put(&quot;namespace&quot;, &quot;http://www.auditchain.finance/&quot;);</span>
+<span class="nc" id="L83">                put(&quot;officialLocation&quot;, &quot;http://www.auditchain.finance/fr/dpm&quot;);</span>
+<span class="nc" id="L84">                put(&quot;prefix&quot;, &quot;audt&quot;);</span>
+<span class="nc" id="L85">                put(&quot;copyright&quot;, &quot;(C) Auditchain&quot;);</span>
+<span class="nc" id="L86">            }</span>
+        });
+<span class="nc" id="L88">        return owners;</span>
+    }
+
+    public static String tmpPdfDir() {
+<span class="nc" id="L92">        return Paths.get(storagePath(&quot;logs&quot;)).toString();</span>
+    }
+
+    private static String storagePath(String subPath) {
+
+<span class="nc" id="L97">        return Paths.get(System.getProperty(&quot;user.dir&quot;), subPath).toString();</span>
+    }
+
+    private static String publicPath() {
+
+<span class="nc" id="L102">        return System.getProperty(&quot;user.dir&quot;);</span>
+    }
+
+    public String get(String key) {
+<span class="fc" id="L106">        return this.settings.get(key);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
